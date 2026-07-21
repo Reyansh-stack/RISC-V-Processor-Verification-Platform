@@ -8,11 +8,11 @@ module top_module (
     output [4:0] sum);
     wire [4:0] cout;
     genvar i;
-    fadder fadder0 (.a(x[0]),.b(y[0]), .cin(0), .sum(sum[0]), .cout(cout[0]));
+    fadder fadder0 (.a(x[0]),.b(y[0]), .cin(1'b0), .sum(sum[0]), .cout(cout[0]));
     generate for (i=1;i<4;i=i+1)begin:ripple
             fadder fadder1 (.a(x[i]),.b(y[i]), .cin(cout[i-1]), .sum(sum[i]), .cout(cout[i]));
         end
-        assign sum[i] = cout[i-1];
+        assign sum[4] = cout[3];
     endgenerate
     
 
